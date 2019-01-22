@@ -1,0 +1,50 @@
+﻿@model ECommerce.ViewModels.ProductCreateViewModel
+@{
+    ViewBag.Title = "Create Product";
+}
+
+<<h2>Create Product</h2>
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>ProductName</td>
+            <td>
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+
+        <tr>
+            <td>Description</td>
+            <td>
+                @Html.TextBoxFor(model => model.Beskrivning)
+                @Html.ValidationMessageFor(model => model.Beskrivning)
+            </td>
+        </tr>
+
+        <tr>
+            <td>Price</td>
+            <td>
+                @Html.TextBoxFor(model => model.Price)
+                @Html.ValidationMessageFor(model => model.Price)
+            </td>
+        </tr>
+
+        <tr>
+            <td>Category Id</td>
+            <td>
+                @Html.TextBoxFor(model => model.CategoryId)
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Spara" />
+}
+}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")

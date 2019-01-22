@@ -1,0 +1,63 @@
+﻿@model ECommerce.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Search</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @if (Model.CurrentSort == "NamnAsc")
+                {
+                    @Html.ActionLink("Namn DESC", "Search", new { search = Model.Search, sort = "NamnDesc" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Namn ASC", "Search", new { search = Model.Search, sort = "NamnAsc" })
+                    }
+            </th>
+            <th>
+            .
+            </th>
+            <th>
+                @if (Model.CurrentSort == "PriceAsc")
+                {
+                        @Html.ActionLink("Price DESC", "Search", new { search = Model.Search, sort = "PriceDesc" })
+                }
+                else
+                {
+                        @Html.ActionLink("Price ASC", "Search", new { search = Model.Search, sort = "PriceAsc" })
+                }
+            </th>
+            <th>.</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.ProductList)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(product.Name,"Info", "Product", new {id = product.ProductId },null)
+                </td>
+                <td>
+                    @product.Description
+                </td>
+                <td>
+                    @product.Price
+                </td>
+                @*@if (Request.IsAuthenticated)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+                    </td>
+                }*@
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,29 @@
+﻿@model ECommerce.ViewModels.ProductEditViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm(FormMethod.Get))
+{
+    <table class="table">
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <td>Category</td>
+            <td>
+                @Html.HiddenFor(product => product.Id)
+                @Html.TextBoxFor(product => product.Name)
+                @Html.TextBoxFor(product => product.Beskrivning)
+                @Html.TextBoxFor(product => product.Price)
+                @Html.TextBoxFor(product => product.CategoryId)
+               
+            </td>
+        </tr>
+
+    </table>
+    <input type="submit" value="Save" />
+
+}

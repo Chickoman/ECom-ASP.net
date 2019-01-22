@@ -1,0 +1,37 @@
+﻿@model  ECommerce.ViewModels.ProductCategoryViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <p class="lead">ECommmerce Inlup för ASP.NET MVC Kurs</p>
+</div>
+<h3>Catagories</h3>
+<table class="table-bordered ">
+    @foreach (var category in Model.CategoriesList)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(category.Name, "Index", "Product", new { id = category.CategoryId }, null)
+            </td>
+
+
+
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", "Category", new { id = category.CategoryId }, null)
+
+            </td>
+
+        </tr>
+    }
+
+
+
+
+
+
+
+
+</table>

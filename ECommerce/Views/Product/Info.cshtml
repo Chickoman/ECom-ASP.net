@@ -1,0 +1,36 @@
+﻿@model ECommerce.ViewModels.ProductInfoViewModel
+@{
+    ViewBag.Title = "Info";
+}
+
+<h3>Info</h3>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <td>Modell</td>
+        <td>@Model.Beskrivning</td>
+    </tr>
+    <tr>
+        <td>ID</td>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <td>Pris</td>
+        <td>@Model.Price</td>
+    </tr>
+    <tr>
+        <td>CategoriID</td>
+        <td>@Model.CategoryId</td>
+    </tr>
+</table>
+
+

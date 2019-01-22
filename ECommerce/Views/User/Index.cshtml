@@ -1,0 +1,26 @@
+﻿@model  ECommerce.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Users</h2>
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Role</th>
+    </tr>
+    @foreach (var item in Model.UserList)
+    {
+        <tr>
+            <td>@item.Email</td>
+            <td>@item.UserName</td>
+            <td>@item.UserRoles</td>
+            @if(User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "User", new { item.Email },null)                 
+                </td>
+            }
+        </tr>
+    }
+</table>

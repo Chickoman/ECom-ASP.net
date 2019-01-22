@@ -1,0 +1,62 @@
+﻿@model ECommerce.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>@Html.DisplayFor(model => model.CategoryName)</h2>
+@if (User.IsInRole("Admin")|| User.IsInRole("Product Manager"))
+{
+    <h3>@Html.ActionLink("Create New Product", "Create", "Product")</h3>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @if (Model.CurrentSort == "NamnAsc")
+                {
+                    @Html.ActionLink("Namn DESC", "Index", new { sort = "NamnDesc" })
+                }
+                else
+                {
+                    @Html.ActionLink("Namn ASC", "Index", new { sort = "NamnAsc" })
+                }
+            </th>
+            <th>
+                .
+            </th>
+            <th>
+                @if (Model.CurrentSort == "PriceAsc")
+                {
+                    @Html.ActionLink("Price DESC", "Index", new { sort = "PriceDesc" })
+                }
+                else
+                {
+                    @Html.ActionLink("Price ASC", "Index", new { sort = "PriceAsc" })
+                }
+            </th>
+            <th>.</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.ProductList)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(product.Name, "Info", "Product", new { id = product.ProductId }, null)
+                    @if (User.IsInRole("Admin") || User.IsInRole("Product Manager"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", "Product", new { id = product.ProductId }, null)
+                    }
+                </td>
+                <td>
+                    @product.Description
+                </td>
+                <td>
+                    @product.Price
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
