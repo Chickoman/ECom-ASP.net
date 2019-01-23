@@ -89,7 +89,7 @@ namespace ECommerce.Controllers
 
         [Authorize(Roles = "Admin,Product Manager")]
         [HttpPost]
-        public ActionResult Edit(ViewModels.ProductEditViewModel model)
+        public ActionResult Edit(ViewModels.ProductEditViewModel model,int id)
         {
             if (!ModelState.IsValid)
             {

@@ -1,59 +1,34 @@
-﻿@model  ECommerce.ViewModels.ProductCategoryViewModel
+﻿@model ECommerce.ViewModels.ProductCategoryViewModel
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="jumbotron">
-    <p class="lead">ECommmerce Inlup för ASP.NET MVC Kurs</p>
-</div>
-
+<h2>Catagories</h2>
+@if (User.IsInRole("Admin") || User.IsInRole("Product Manager"))
+{
+    <h3>@Html.ActionLink("Create New Category", "Create", "Category")</h3>
+}
 <table class="table">
-    <tr>
-    
-        <td>
-            @if (User.IsInRole("Admin")|| User.IsInRole("Product Manager"))
-            {
-                @Html.ActionLink("Create New Category", "Create", "Category")
-            }
-            </td>
-    </tr>
-
-</table>
-
-<table class="table-bordered ">
-    <tr>
-        <th>Categories</th>
-
-        <th>Edit</th>
-    </tr>
-    @foreach (var category in Model.CategoriesList)
-    {
-        
-        <tr>
-            <td>
-                @Html.ActionLink(category.Name, "Index", "Product", new { id = category.CategoryId }, null)
-            </td>
-
-
-
-
-            <td>
-                @if (User.IsInRole("Admin") || User.IsInRole("Product Manager"))
-                {
-
-                    @Html.ActionLink("Edit", "Edit", "Category", new { id = category.CategoryId }, null)
-                }
-            </td>
-
-        </tr>
-    }
-
-
-
-
-
-
-
-
+    <thead>
+     
+    </thead>
+    <tbody>
+        @foreach (var catagory in Model.CategoriesList)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(catagory.Name, "Index", "Product", new { id = catagory.CategoryId }, null)
+                  
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Product Manager"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", "Category", new { id = catagory.CategoryId }, null)
+                    }
+                </td>
+              
+            </tr>
+        }
+    </tbody>
 </table>
