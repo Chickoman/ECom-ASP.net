@@ -168,7 +168,7 @@ namespace ECommerce.Controllers
                         //Ends Here
 
 
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         return RedirectToAction("Index", "Home");
                     }
